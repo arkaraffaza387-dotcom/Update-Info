@@ -219,10 +219,7 @@
       letter-spacing: 0.4px;
     }
 
-    .script-header i {
-      color: #7d9bff;
-      font-size: 1rem;
-    }
+    .script-header i { color: #7d9bff; font-size: 1rem; }
 
     .script-box {
       position: relative;
@@ -239,16 +236,10 @@
       box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
     }
 
-    .script-box a {
-      color: #9fb8ff;
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(159, 184, 255, 0.4);
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .script-box a:hover {
-      color: #d6e0ff;
-      border-color: rgba(214, 224, 255, 0.8);
+    .script-box code {
+      font-family: 'Inter', monospace;
+      color: #b8ffd0;
+      white-space: pre-wrap;
     }
 
     .copy-btn {
@@ -384,13 +375,13 @@
         <i class="fas fa-code"></i> Script Update V5.0
       </div>
       <div class="script-box" id="scriptBox">
-        <span id="scriptUrl">https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy</span>
+        <code id="scriptText">loadstring(game:HttpGet("https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy"))()</code>
         <button class="copy-btn" id="copyBtn" type="button">
           <i class="fas fa-copy"></i> <span id="copyBtnText">Salin</span>
         </button>
       </div>
       <div class="script-hint">
-        <i class="fas fa-info-circle"></i> Tekan tombol salin untuk menyalin link script ke clipboard.
+        <i class="fas fa-info-circle"></i> Tekan tombol salin untuk menyalin script ke clipboard.
       </div>
     </div>
 
@@ -412,11 +403,11 @@
       const secondsEl = document.getElementById('seconds');
       const countdownLabel = document.getElementById('countdownLabel');
       const scriptSection = document.getElementById('scriptSection');
-      const scriptUrlEl = document.getElementById('scriptUrl');
       const copyBtn = document.getElementById('copyBtn');
       const copyBtnText = document.getElementById('copyBtnText');
 
-      const SCRIPT_URL = 'https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy';
+      // Script final yang akan disalin
+      const SCRIPT_TEXT = 'loadstring(game:HttpGet("https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy"))()';
 
       let hasRevealed = false;
 
@@ -460,11 +451,10 @@
       copyBtn.addEventListener('click', async function () {
         try {
           if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(SCRIPT_URL);
+            await navigator.clipboard.writeText(SCRIPT_TEXT);
           } else {
-            // fallback untuk browser / konteks non-secure
             const textArea = document.createElement('textarea');
-            textArea.value = SCRIPT_URL;
+            textArea.value = SCRIPT_TEXT;
             textArea.style.position = 'fixed';
             textArea.style.opacity = '0';
             document.body.appendChild(textArea);
@@ -489,7 +479,6 @@
         }
       });
 
-      // Jalankan real-time
       updateCountdown();
       setInterval(updateCountdown, 1000);
     })();
