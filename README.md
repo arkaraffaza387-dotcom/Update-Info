@@ -1,20 +1,15 @@
+
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZetGames · Update Countdown</title>
-  <!-- Font elegan & modern -->
+  <title>ZetGames · Update V5.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <!-- Font Awesome untuk ikon halus -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: linear-gradient(145deg, #0b0f1c 0%, #141b2b 100%);
@@ -27,7 +22,6 @@
       color: #eef2ff;
     }
 
-    /* kartu utama — lembut, rounded, shadow elegan */
     .update-card {
       max-width: 820px;
       width: 100%;
@@ -36,7 +30,7 @@
       -webkit-backdrop-filter: blur(12px);
       border-radius: 3.5rem;
       padding: 2.8rem 2.5rem;
-      box-shadow: 
+      box-shadow:
         0 30px 50px -15px rgba(0, 0, 0, 0.6),
         inset 0 1px 2px rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(110, 130, 200, 0.2);
@@ -44,13 +38,12 @@
     }
 
     .update-card:hover {
-      box-shadow: 
+      box-shadow:
         0 40px 60px -18px rgba(0, 0, 0, 0.8),
         inset 0 1px 3px rgba(255, 255, 255, 0.08);
       transform: scale(1.003);
     }
 
-    /* header dengan aksen lembut */
     .header {
       display: flex;
       align-items: center;
@@ -60,11 +53,7 @@
       gap: 1rem;
     }
 
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .badge { display: flex; align-items: center; gap: 0.6rem; }
 
     .badge i {
       font-size: 2rem;
@@ -90,11 +79,9 @@
       border: 1px solid rgba(125, 155, 255, 0.25);
       color: #b7c8ff;
       font-weight: 500;
-      backdrop-filter: blur(4px);
       letter-spacing: 0.3px;
     }
 
-    /* judul besar */
     .title-section h1 {
       font-size: 2.8rem;
       font-weight: 700;
@@ -117,11 +104,7 @@
       flex-wrap: wrap;
     }
 
-    .sub i {
-      font-size: 1rem;
-      color: #7d9bff;
-      opacity: 0.9;
-    }
+    .sub i { font-size: 1rem; color: #7d9bff; opacity: 0.9; }
 
     .date-highlight {
       background: rgba(125, 155, 255, 0.1);
@@ -136,10 +119,7 @@
       gap: 0.4rem;
     }
 
-    /* Countdown */
-    .countdown-container {
-      margin: 2.5rem 0 1.8rem;
-    }
+    .countdown-container { margin: 2.5rem 0 1.8rem; }
 
     .countdown-label {
       font-size: 0.9rem;
@@ -153,16 +133,9 @@
       gap: 0.5rem;
     }
 
-    .countdown-label i {
-      font-size: 0.9rem;
-      color: #7d9bff;
-    }
+    .countdown-label i { font-size: 0.9rem; color: #7d9bff; }
 
-    .countdown-grid {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+    .countdown-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
 
     .countdown-item {
       background: rgba(18, 24, 40, 0.7);
@@ -200,7 +173,6 @@
       font-weight: 500;
     }
 
-    /* info tambahan */
     .update-note {
       display: flex;
       align-items: center;
@@ -213,105 +185,158 @@
       flex-wrap: wrap;
     }
 
-    .update-note i {
-      font-size: 1.6rem;
-      color: #7d9bff;
-      opacity: 0.8;
-    }
+    .update-note i { font-size: 1.6rem; color: #7d9bff; opacity: 0.8; }
 
-    .update-note p {
-      font-size: 1rem;
-      color: #b9c6ec;
-      font-weight: 400;
-      line-height: 1.5;
-    }
+    .update-note p { font-size: 1rem; color: #b9c6ec; font-weight: 400; line-height: 1.5; }
+    .update-note strong { color: #d6e0ff; font-weight: 600; }
 
-    .update-note strong {
-      color: #d6e0ff;
-      font-weight: 600;
-    }
-
-    /* garis pemisah halus */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(125, 155, 255, 0.2), transparent);
       margin: 1.8rem 0 0.5rem;
     }
 
-    /* responsif */
+    /* ---- Bagian script yang muncul setelah countdown selesai ---- */
+    .script-section {
+      display: none;
+      margin-top: 1.8rem;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .script-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #b7c8ff;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.4px;
+    }
+
+    .script-header i {
+      color: #7d9bff;
+      font-size: 1rem;
+    }
+
+    .script-box {
+      position: relative;
+      background: rgba(12, 17, 30, 0.9);
+      border: 1px solid rgba(125, 155, 255, 0.25);
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      padding-right: 6.2rem;
+      font-family: 'Inter', monospace;
+      font-size: 0.92rem;
+      color: #cbd6ff;
+      word-break: break-all;
+      line-height: 1.6;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .script-box a {
+      color: #9fb8ff;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(159, 184, 255, 0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .script-box a:hover {
+      color: #d6e0ff;
+      border-color: rgba(214, 224, 255, 0.8);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      background: rgba(125, 155, 255, 0.18);
+      border: 1px solid rgba(125, 155, 255, 0.4);
+      color: #d6e0ff;
+      border-radius: 100px;
+      padding: 0.55rem 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+      backdrop-filter: blur(6px);
+    }
+
+    .copy-btn:hover {
+      background: rgba(125, 155, 255, 0.35);
+      border-color: rgba(125, 155, 255, 0.7);
+    }
+
+    .copy-btn:active { transform: translateY(-50%) scale(0.96); }
+
+    .copy-btn.copied {
+      background: rgba(100, 220, 150, 0.25);
+      border-color: rgba(100, 220, 150, 0.7);
+      color: #b8ffd0;
+    }
+
+    .script-hint {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: #8f9fca;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .script-hint i { font-size: 0.75rem; }
+
     @media (max-width: 580px) {
-      .update-card {
-        padding: 2rem 1.5rem;
-        border-radius: 2.5rem;
-      }
-      .title-section h1 {
-        font-size: 2rem;
-      }
-      .countdown-number {
-        font-size: 2.4rem;
-      }
-      .countdown-item {
-        padding: 1rem 0.6rem;
-        border-radius: 1.5rem;
-      }
-      .countdown-grid {
-        gap: 0.7rem;
-      }
-      .update-note {
-        padding: 1rem 1.2rem;
-      }
-      .badge i {
-        font-size: 1.6rem;
-      }
-      .badge span {
-        font-size: 1rem;
-      }
-      .version-tag {
-        font-size: 0.8rem;
-        padding: 0.4rem 1rem;
-      }
+      .update-card { padding: 2rem 1.5rem; border-radius: 2.5rem; }
+      .title-section h1 { font-size: 2rem; }
+      .countdown-number { font-size: 2.4rem; }
+      .countdown-item { padding: 1rem 0.6rem; border-radius: 1.5rem; }
+      .countdown-grid { gap: 0.7rem; }
+      .update-note { padding: 1rem 1.2rem; }
+      .badge i { font-size: 1.6rem; }
+      .badge span { font-size: 1rem; }
+      .version-tag { font-size: 0.8rem; padding: 0.4rem 1rem; }
+      .script-box { padding-right: 1.2rem; padding-bottom: 3.2rem; }
+      .copy-btn { top: auto; bottom: 0.8rem; right: 50%; transform: translateX(50%); }
+      .copy-btn:active { transform: translateX(50%) scale(0.96); }
     }
 
     @media (max-width: 400px) {
-      .countdown-number {
-        font-size: 2rem;
-      }
-      .countdown-unit {
-        font-size: 0.65rem;
-        letter-spacing: 1px;
-      }
-      .title-section h1 {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* efek halus untuk link/icon */
-    i {
-      transition: color 0.2s;
+      .countdown-number { font-size: 2rem; }
+      .countdown-unit { font-size: 0.65rem; letter-spacing: 1px; }
+      .title-section h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
   <div class="update-card">
-    <!-- Header: ZetGames & versi -->
     <div class="header">
       <div class="badge">
         <i class="fas fa-cube"></i>
         <span>ZetGames</span>
       </div>
       <div class="version-tag">
-        <i class="fas fa-code-branch" style="margin-right: 6px; font-size: 0.8rem;"></i> v2.4.0 · major update
+        <i class="fas fa-code-branch" style="margin-right: 6px; font-size: 0.8rem;"></i> Update V5.0
       </div>
     </div>
 
-    <!-- Judul + info tanggal -->
     <div class="title-section">
-      <h1>Informasi Update</h1>
+      <h1>Informasi Update V5.0</h1>
       <div class="sub">
         <i class="fas fa-calendar-alt"></i>
         <span class="date-highlight">
-          <i class="far fa-clock" style="font-size: 0.8rem;"></i> 
-          17 Oktober 2026 · 10:00 WIB
+          <i class="far fa-clock" style="font-size: 0.8rem;"></i>
+          17 Oktober 2026 · 10:30 WIB
         </span>
         <span style="display: inline-flex; align-items: center; gap: 0.3rem;">
           <i class="fas fa-rocket" style="font-size: 0.9rem;"></i> segera hadir
@@ -319,9 +344,8 @@
       </div>
     </div>
 
-    <!-- Countdown -->
     <div class="countdown-container">
-      <div class="countdown-label">
+      <div class="countdown-label" id="countdownLabel">
         <i class="fas fa-hourglass-half"></i> hitung mundur update
       </div>
       <div class="countdown-grid" id="countdown">
@@ -344,18 +368,32 @@
       </div>
     </div>
 
-    <!-- Catatan tambahan -->
     <div class="update-note">
       <i class="fas fa-bolt"></i>
       <p>
-        <strong>ZetGames v2.4.0</strong> — peningkatan performa, fitur baru, dan pengalaman bermain yang lebih mulus. 
+        <strong>ZetGames V5.0</strong> — peningkatan performa, fitur baru, dan pengalaman bermain yang lebih mulus.
         <span style="display: inline-block; background: rgba(125,155,255,0.15); border-radius: 60px; padding: 0.2rem 0.8rem; margin-left: 8px; font-size: 0.85rem;">
           <i class="fas fa-sync-alt" style="margin-right: 4px;"></i> siap diunduh
         </span>
       </p>
     </div>
 
-    <!-- garis dekoratif -->
+    <!-- Bagian script: muncul otomatis setelah countdown selesai -->
+    <div class="script-section" id="scriptSection">
+      <div class="script-header">
+        <i class="fas fa-code"></i> Script Update V5.0
+      </div>
+      <div class="script-box" id="scriptBox">
+        <span id="scriptUrl">https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy</span>
+        <button class="copy-btn" id="copyBtn" type="button">
+          <i class="fas fa-copy"></i> <span id="copyBtnText">Salin</span>
+        </button>
+      </div>
+      <div class="script-hint">
+        <i class="fas fa-info-circle"></i> Tekan tombol salin untuk menyalin link script ke clipboard.
+      </div>
+    </div>
+
     <div class="divider"></div>
     <div style="display: flex; justify-content: flex-end; margin-top: 1rem; opacity: 0.6; font-size: 0.8rem; color: #8f9fca;">
       <i class="fas fa-shield-alt" style="margin-right: 8px;"></i> countdown real-time · ZetGames official
@@ -363,18 +401,34 @@
   </div>
 
   <script>
-    (function() {
-      // Target: 17 Oktober 2026, 10:00 WIB (UTC+7)
-      // Kita set dalam UTC: 17 Oct 2026 10:00 WIB = 17 Oct 2026 03:00 UTC
-      const targetDate = new Date(Date.UTC(2026, 9, 17, 3, 0, 0)); // bulan 9 = Oktober
+    (function () {
+      // Target: 17 Oktober 2026, 10:30 WIB (UTC+7)
+      // 10:30 WIB = 03:30 UTC
+      const targetDate = new Date(Date.UTC(2026, 9, 17, 3, 30, 0)); // bulan 9 = Oktober
 
       const daysEl = document.getElementById('days');
       const hoursEl = document.getElementById('hours');
       const minutesEl = document.getElementById('minutes');
       const secondsEl = document.getElementById('seconds');
+      const countdownLabel = document.getElementById('countdownLabel');
+      const scriptSection = document.getElementById('scriptSection');
+      const scriptUrlEl = document.getElementById('scriptUrl');
+      const copyBtn = document.getElementById('copyBtn');
+      const copyBtnText = document.getElementById('copyBtnText');
+
+      const SCRIPT_URL = 'https://fazxy-script.lovable.app/api/public/raw/Aimbot-Free-Fazxy';
+
+      let hasRevealed = false;
 
       function padZero(num) {
         return num.toString().padStart(2, '0');
+      }
+
+      function showScriptSection() {
+        if (hasRevealed) return;
+        hasRevealed = true;
+        scriptSection.style.display = 'block';
+        countdownLabel.innerHTML = '<i class="fas fa-check-circle" style="color:#7dff9b;"></i> UPDATE TERSEDIA!';
       }
 
       function updateCountdown() {
@@ -382,13 +436,11 @@
         const diffMs = targetDate - now;
 
         if (diffMs <= 0) {
-          // Jika sudah lewat / tepat waktu
           daysEl.textContent = '00';
           hoursEl.textContent = '00';
           minutesEl.textContent = '00';
           secondsEl.textContent = '00';
-          // Opsional: tampilkan pesan update tersedia
-          document.querySelector('.countdown-label').innerHTML = '<i class="fas fa-check-circle" style="color:#7dff9b;"></i> UPDATE TERSEDIA!';
+          showScriptSection();
           return;
         }
 
@@ -404,9 +456,41 @@
         secondsEl.textContent = padZero(seconds);
       }
 
-      // panggil pertama kali
+      // Tombol salin
+      copyBtn.addEventListener('click', async function () {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(SCRIPT_URL);
+          } else {
+            // fallback untuk browser / konteks non-secure
+            const textArea = document.createElement('textarea');
+            textArea.value = SCRIPT_URL;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+          }
+          copyBtn.classList.add('copied');
+          copyBtnText.textContent = 'Tersalin!';
+          copyBtn.querySelector('i').className = 'fas fa-check';
+          setTimeout(function () {
+            copyBtn.classList.remove('copied');
+            copyBtnText.textContent = 'Salin';
+            copyBtn.querySelector('i').className = 'fas fa-copy';
+          }, 2000);
+        } catch (err) {
+          copyBtnText.textContent = 'Gagal';
+          setTimeout(function () {
+            copyBtnText.textContent = 'Salin';
+          }, 2000);
+        }
+      });
+
+      // Jalankan real-time
       updateCountdown();
-      // update tiap detik
       setInterval(updateCountdown, 1000);
     })();
   </script>
